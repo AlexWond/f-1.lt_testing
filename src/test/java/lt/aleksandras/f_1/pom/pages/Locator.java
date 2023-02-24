@@ -15,5 +15,12 @@ public class Locator {
         By bannerOverlay
                 = By.xpath(
                         "//a[@style='position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; z-index: 9999999999; cursor: pointer;']");
+        public static By userNameInput = By.xpath("//input[@id='register-username']");
+        public static By emailInput = By.xpath("//input[@id='register-email']");
+
+        public static By passwordInput = By.xpath("//input[@id='register-password']");
+        public static By passwordConfirmInput = By.xpath("//input[@id='register-confirm-password']");
+        public static By registerButton = By.xpath("//button[@id='register-button']");
+        public static By registerError = By.xpath("//div[@id='register-error']");
     }
 }

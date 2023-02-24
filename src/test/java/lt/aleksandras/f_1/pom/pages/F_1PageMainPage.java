@@ -42,4 +42,43 @@ public class F_1PageMainPage {
         Common.clickToCloseElement();
     }
 
+    public static void inputUserName(String userName) {
+        Common.sendKeysToElement(
+                Locator.F_1PageMain.userNameInput,
+                userName
+        );
+    }
+
+    public static void inputEmail(String email) {
+        Common.sendKeysToElement(
+                Locator.F_1PageMain.emailInput,
+                email
+        );
+    }
+
+    public static void inputPassword(String password) {
+        Common.sendKeysToElement(
+                Locator.F_1PageMain.passwordInput,
+                password
+        );
+    }
+
+    public static void inputConfirmPassword(String confirmPassword) {
+        Common.sendKeysToElement(
+                Locator.F_1PageMain.passwordConfirmInput,
+                confirmPassword
+        );
+    }
+
+    public static void clickRegisterButton() {
+        Common.clickElement(
+                Locator.F_1PageMain.registerButton
+        );
+    }
+
+    public static String readMessage() {
+        return Common.getElementText(
+                Locator.F_1PageMain.registerError
+        );
+    }
 }
