@@ -1,11 +1,10 @@
 package lt.aleksandras.f_1.pom.pages;
 
 import lt.aleksandras.f_1.pom.utils.Driver;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Common {
 
@@ -25,10 +24,6 @@ public class Common {
         return Driver.getDriver().findElement(locator);
     }
 
-    private static List<WebElement> getElements(By locator) {
-        return Driver.getDriver().findElements(locator);
-    }
-
     public static void sendKeysToElement(By locator, String text) {
         getElement(locator).sendKeys(text);
     }
@@ -45,37 +40,6 @@ public class Common {
         WebElement element = getElement(locator);
         Select select = new Select(element);
         select.selectByValue(number);
-    }
-
-    public static List<Boolean> getSelectedStatusOfAllCheckboxes(By locator) {
-        List<WebElement> elements = getElements(locator);
-        List<Boolean> elementStatuses = new ArrayList<>();
-
-        for (WebElement element : elements) {
-            elementStatuses.add(element.isSelected());
-        }
-        return elementStatuses;
-    }
-
-    public static String getElementAttributeOutcome(By locator, String attributeName) {
-        return getElement(locator).getAttribute(attributeName);
-    }
-
-    public static void acceptAlert() {
-        Driver.getDriver().switchTo().alert().accept();
-    }
-
-    public static void dismissAlert() {
-        Driver.getDriver().switchTo().alert().dismiss();
-    }
-
-    public static boolean isAlertPresent() {
-        try {
-            Driver.getDriver().switchTo().alert();
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-        return true;
     }
 
     public static void sleep(int millis) {
@@ -112,38 +76,4 @@ public class Common {
             e.printStackTrace();
         }
     }
-
-    public static boolean isAswift8Host() {
-        try {
-            getElement(Locator.F_1PageMain.bannerAswift8Host);
-        } catch (NoSuchElementException e) {
-            return false;
-        } catch (ElementNotInteractableException e) {
-            return false;
-        }
-        return true;
-    }
-
-    public static void clickToCloseAswift8Host() {
-        try {
-            clickElement(Locator.F_1PageMain.bannerAswift8Host);
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-        } catch (ElementNotInteractableException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void switchToIFrame() {
-        Driver.getDriver().switchTo().frame(Locator.F_1PageMain.aswift1);
-    }
-
-    public static void clickCloseAswift1Host() {
-        clickElement(Locator.F_1PageMain.closeAswift1Host);
-    }
-
-    public static void returnToMainWindow() {
-        Driver.getDriver().switchTo().defaultContent();
-    }
-
 }

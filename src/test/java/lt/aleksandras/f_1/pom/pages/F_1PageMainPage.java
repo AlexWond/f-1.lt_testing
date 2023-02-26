@@ -1,6 +1,5 @@
 package lt.aleksandras.f_1.pom.pages;
 
-import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NoSuchElementException;
 
 public class F_1PageMainPage {
@@ -117,24 +116,6 @@ public class F_1PageMainPage {
 
     public static String readUserName() {
         return Common.getElementText(Locator.F_1PageMain.loggedInUserName);
-    }
-
-    public static boolean isAswift8HostBanner() {
-        return Common.isAswift8Host();
-    }
-
-    public static void clickAswift8HostBanner() {
-        Common.clickToCloseAswift8Host();
-    }
-
-    public static void closeAswift1Host() {
-        try {
-            Common.switchToIFrame();
-            Common.clickCloseAswift1Host();
-            Common.returnToMainWindow();
-        } catch (ElementNotInteractableException e){
-            e.printStackTrace();
-        }
     }
 
     public static void closeAdsAndCookies() {

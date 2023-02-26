@@ -27,9 +27,6 @@ public class Locator {
         public static By loginPassword = By.xpath("//input[@id='login-password']");
         public static By loginPrisijungit = By.xpath("//button[@id='login-button']");
         public static By loggedInUserName = By.xpath("//li[@class='hidden-mobile login-user-username']");
-        public static By bannerAswift8Host = By.xpath("//div[@id='aswift_8_host']");
-        public static By closeAswift1Host = By.xpath("(//div[@id='cbb' and @role='button'])[1]");
-        public static String aswift1 = "aswift_1";
     }
 
     public static class F_1SpelioneSpejimai26 {
