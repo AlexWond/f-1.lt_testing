@@ -5,6 +5,10 @@ import org.openqa.selenium.NoSuchElementException;
 
 public class F_1PageMainPage {
 
+    public static void set() {
+        Common.setDriver();
+    }
+
     public static void open() {
         Common.openUrl("https://www.f-1.lt/");
     }
