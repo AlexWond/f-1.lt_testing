@@ -9,8 +9,11 @@ import java.util.List;
 
 public class Common {
 
-    public static void openUrl(String url) {
+    public static void setDriver() {
         Driver.setDriver();
+    }
+
+    public static void openUrl(String url) {
         Driver.getDriver().get(url);
     }
 
@@ -142,6 +145,5 @@ public class Common {
     public static void returnToMainWindow() {
         Driver.getDriver().switchTo().defaultContent();
     }
-
 
 }
