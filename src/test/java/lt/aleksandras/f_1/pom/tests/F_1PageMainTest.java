@@ -28,7 +28,7 @@ public class F_1PageMainTest extends BaseTest {
     @DataProvider(name = "dataProviderTestPositiveRegistrationForm")
     public Object[][] dataProviderPositiveRegistrationForm() {
         return new Object[][]{
-                {"Antanas104", "info@00004.lt", "paswordas", "paswordas"}
+                {"Antanas105", "info@00005.lt", "paswordas", "paswordas"}
         };
     }
 
