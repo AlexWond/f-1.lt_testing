@@ -31,4 +31,16 @@ public class Locator {
         public static By closeAswift1Host = By.xpath("(//div[@id='cbb' and @role='button'])[1]");
         public static String aswift1 = "aswift_1";
     }
+
+    public static class F_1SpelioneSpejimai26 {
+
+        public static By polePosition = By.xpath("//select[@name='pp']");
+        public static By fastestLap = By.xpath("//select[@name='fl']");
+        public static By buttonPatvirtinti = By.xpath("//button[@type='submit']");
+        public static By guessConfirmMessage = By.xpath("//div[@class='alert alert-success']");
+
+        public static By placePosition(int place) {
+            return By.xpath("//select[@name='" + place + "']");
+        }
+    }
 }

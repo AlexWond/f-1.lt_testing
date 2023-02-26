@@ -41,10 +41,10 @@ public class Common {
         return getElement(locator).getText();
     }
 
-    public static void selectOptionByValue(By locator, String day) {
+    public static void selectOptionByValue(By locator, String number) {
         WebElement element = getElement(locator);
         Select select = new Select(element);
-        select.selectByValue(day);
+        select.selectByValue(number);
     }
 
     public static List<Boolean> getSelectedStatusOfAllCheckboxes(By locator) {

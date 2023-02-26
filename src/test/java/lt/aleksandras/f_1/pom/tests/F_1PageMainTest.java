@@ -35,7 +35,7 @@ public class F_1PageMainTest extends BaseTest {
     @DataProvider(name = "dataProviderTestPositiveLogin")
     public Object[][] dataProviderPositiveLogin() {
         return new Object[][]{
-                {"Wonderis", "Fbaskiene2"}
+                {"qwerty0001", "paswordas"}
         };
     }
 
