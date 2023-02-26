@@ -12,7 +12,7 @@ public class Locator {
         public static By registrationForm = By.xpath("(//div[@class='modal-content'])[2]");
         public static By bannerDraugasLt = By.xpath("//iframe[@name='draugas']");
         public static
-        By bannerOverlay
+        By bannerDraugas
                 = By.xpath(
                         "//a[@style='position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;" +
                                 " z-index: 9999999999; cursor: pointer;']");
@@ -23,5 +23,12 @@ public class Locator {
         public static By passwordConfirmInput = By.xpath("//input[@id='register-confirm-password']");
         public static By registerButton = By.xpath("//button[@id='register-button']");
         public static By registerError = By.xpath("//div[@id='register-error']");
+        public static By loginUserName = By.xpath("//input[@id='login-username']");
+        public static By loginPassword = By.xpath("//input[@id='login-password']");
+        public static By loginPrisijungit = By.xpath("//button[@id='login-button']");
+        public static By loggedInUserName = By.xpath("//li[@class='hidden-mobile login-user-username']");
+        public static By bannerAswift8Host = By.xpath("//div[@id='aswift_8_host']");
+        public static By closeAswift1Host = By.xpath("(//div[@id='cbb' and @role='button'])[1]");
+        public static String aswift1 = "aswift_1";
     }
 }

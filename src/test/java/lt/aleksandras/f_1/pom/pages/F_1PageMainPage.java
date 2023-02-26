@@ -1,5 +1,8 @@
 package lt.aleksandras.f_1.pom.pages;
 
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.NoSuchElementException;
+
 public class F_1PageMainPage {
 
     public static void open() {
@@ -12,16 +15,20 @@ public class F_1PageMainPage {
         );
     }
 
-    public static void clickCloseAdvertisment() {
-        Common.clickElement(
-                Locator.F_1PageMain.buttonCloseAdvertisment
-        );
+    private static void clickCloseAdvertisment() {
+        try {
+            Common.clickElement(Locator.F_1PageMain.buttonCloseAdvertisment);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void clickSupratauCookiesButton() {
-        Common.clickElement(
-                Locator.F_1PageMain.buttonSupratauCookies
-        );
+    private static void clickSupratauCookiesButton() {
+        try {
+            Common.clickElement(Locator.F_1PageMain.buttonSupratauCookies);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void clickRegistruokitesButton() {
@@ -34,12 +41,12 @@ public class F_1PageMainPage {
         return Common.isRegistrationFormPresent();
     }
 
-    public static boolean isDraugasBanner() {
+    private static boolean isDraugasBanner() {
         return Common.isDraugasLtBanner();
     }
 
-    public static void clickCloseOverlayElement() {
-        Common.clickToCloseOverlayElement();
+    private static void clickCloseDraugasBanner() {
+        Common.clickToCloseDraugasBanner();
     }
 
     public static void inputUserName(String userName) {
@@ -84,5 +91,53 @@ public class F_1PageMainPage {
 
     public static void sleep(int millisec) {
         Common.sleep(millisec);
+    }
+
+    public static void inputLoginUserName(String userName) {
+        Common.sendKeysToElement(
+                Locator.F_1PageMain.loginUserName,
+                userName
+        );
+    }
+
+    public static void inputLoginPassword(String password) {
+        Common.sendKeysToElement(
+                Locator.F_1PageMain.loginPassword,
+                password
+        );
+    }
+
+    public static void clickLoginPrisijungti() {
+        Common.clickElement(Locator.F_1PageMain.loginPrisijungit);
+    }
+
+    public static String readUserName() {
+        return Common.getElementText(Locator.F_1PageMain.loggedInUserName);
+    }
+
+    public static boolean isAswift8HostBanner() {
+        return Common.isAswift8Host();
+    }
+
+    public static void clickAswift8HostBanner() {
+        Common.clickToCloseAswift8Host();
+    }
+
+    public static void closeAswift1Host() {
+        try {
+            Common.switchToIFrame();
+            Common.clickCloseAswift1Host();
+            Common.returnToMainWindow();
+        } catch (ElementNotInteractableException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void closeAdsAndCookies() {
+        if (isDraugasBanner()) {
+            clickCloseDraugasBanner();
+        }
+        clickCloseAdvertisment();
+        clickSupratauCookiesButton();
     }
 }

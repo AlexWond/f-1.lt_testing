@@ -6,29 +6,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class F_1PageMainTest extends BaseTest{
+public class F_1PageMainTest extends BaseTest {
     @BeforeMethod
     @Override
     public void setup() {
         F_1PageMainPage.open();
     }
 
-    @Test
-    public void testIsInstanceOfRegistrationForm() {
-
-        boolean expectedResult = true;
-        boolean actualResult;
-
-        closeAdsAndCookies();
-        F_1PageMainPage.clickPrisijungtiButton();
-        F_1PageMainPage.clickRegistruokitesButton();
-        actualResult = F_1PageMainPage.isRegistrationForm();
-
-        Assert.assertEquals(actualResult, expectedResult);
-    }
-
-    @DataProvider (name = "dataProviderTestNegativeRegistrationForm" )
-    public Object[][] dataProviderNegativeRegistrationForm(){
+    @DataProvider(name = "dataProviderTestNegativeRegistrationForm")
+    public Object[][] dataProviderNegativeRegistrationForm() {
         return new Object[][]{
                 {"gafgag", "asdfafd", "paswordas", "paswordas"},
                 {"fsatav", "info@f-1.lt", "paswordas", "paswordas"},
@@ -38,11 +24,39 @@ public class F_1PageMainTest extends BaseTest{
         };
     }
 
+    @DataProvider(name = "dataProviderTestPositiveRegistrationForm")
+    public Object[][] dataProviderPositiveRegistrationForm() {
+        return new Object[][]{
+                {"Antanas104", "info@00004.lt", "paswordas", "paswordas"}
+        };
+    }
+
+    @DataProvider(name = "dataProviderTestPositiveLogin")
+    public Object[][] dataProviderPositiveLogin() {
+        return new Object[][]{
+                {"Wonderis", "Fbaskiene2"}
+        };
+    }
+
+    @Test
+    public void testIsInstanceOfRegistrationForm() {
+
+        boolean expectedResult = true;
+        boolean actualResult;
+
+        F_1PageMainPage.closeAdsAndCookies();
+        F_1PageMainPage.clickPrisijungtiButton();
+        F_1PageMainPage.clickRegistruokitesButton();
+        actualResult = F_1PageMainPage.isRegistrationForm();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
+
     @Test(dataProvider = "dataProviderTestNegativeRegistrationForm")
     public void testNegativeRegistrationForm(String userName,
                                              String email,
                                              String password,
-                                             String confirmPassword){
+                                             String confirmPassword) {
         String negativeEmail = "Prašome įvesti tvarkingą el. pašto adresą";
         String existingEmail = "Vartotojas nurodytu el. pašto adresu jau egzistuoja";
         String blankInput = "Prašome užpildyti visus laukus";
@@ -51,7 +65,7 @@ public class F_1PageMainTest extends BaseTest{
 
         String actualResult;
 
-        closeAdsAndCookies();
+        F_1PageMainPage.closeAdsAndCookies();
         F_1PageMainPage.clickPrisijungtiButton();
         F_1PageMainPage.clickRegistruokitesButton();
         F_1PageMainPage.inputUserName(userName);
@@ -64,21 +78,52 @@ public class F_1PageMainTest extends BaseTest{
         actualResult = F_1PageMainPage.readMessage();
 
         Assert.assertTrue(
-                actualResult.equals(negativeEmail)||
-                actualResult.equals(existingEmail)||
-                actualResult.equals(blankInput)||
-                actualResult.equals(differentConfirmPassword)||
-                actualResult.equals((existingUserName))
+                actualResult.equals(negativeEmail) ||
+                        actualResult.equals(existingEmail) ||
+                        actualResult.equals(blankInput) ||
+                        actualResult.equals(differentConfirmPassword) ||
+                        actualResult.equals((existingUserName))
         );
     }
 
-    public void closeAdsAndCookies(){
-        if (F_1PageMainPage.isDraugasBanner()) {
-            F_1PageMainPage.clickCloseOverlayElement();
-        }
+    @Test(dataProvider = "dataProviderTestPositiveRegistrationForm")
+    public void testPositiveRegistrationForm(String userName,
+                                             String email,
+                                             String password,
+                                             String confirmPassword) {
+        String expectedResult = "Vartotojas sukurtas";
+        String actualResult;
 
-        F_1PageMainPage.clickCloseAdvertisment();
-        F_1PageMainPage.clickSupratauCookiesButton();
+        F_1PageMainPage.closeAdsAndCookies();
+        F_1PageMainPage.clickPrisijungtiButton();
+        F_1PageMainPage.clickRegistruokitesButton();
+        F_1PageMainPage.inputUserName(userName);
+        F_1PageMainPage.inputEmail(email);
+        F_1PageMainPage.inputPassword(password);
+        F_1PageMainPage.inputConfirmPassword(confirmPassword);
+        F_1PageMainPage.clickRegisterButton();
+        F_1PageMainPage.sleep(2000);
+
+        actualResult = F_1PageMainPage.readMessage();
+
+        Assert.assertTrue(
+                actualResult.contains(expectedResult));
     }
 
+    @Test(dataProvider = "dataProviderTestPositiveLogin")
+    public void testPositiveLogin(String userName, String password) {
+        String expectedResult = userName;
+        String actualResult;
+
+        F_1PageMainPage.closeAdsAndCookies();
+        F_1PageMainPage.clickPrisijungtiButton();
+        F_1PageMainPage.inputLoginUserName(userName);
+        F_1PageMainPage.inputLoginPassword(password);
+        F_1PageMainPage.clickLoginPrisijungti();
+        F_1PageMainPage.sleep(3000);
+
+        actualResult = F_1PageMainPage.readUserName();
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }

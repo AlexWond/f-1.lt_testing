@@ -1,10 +1,7 @@
 package lt.aleksandras.f_1.pom.pages;
 
 import lt.aleksandras.f_1.pom.utils.Driver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
@@ -105,11 +102,46 @@ public class Common {
         return true;
     }
 
-    public static void clickToCloseOverlayElement() {
+    public static void clickToCloseDraugasBanner() {
         try {
-            clickElement(Locator.F_1PageMain.bannerOverlay);
+            clickElement(Locator.F_1PageMain.bannerDraugas);
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
     }
+
+    public static boolean isAswift8Host() {
+        try {
+            getElement(Locator.F_1PageMain.bannerAswift8Host);
+        } catch (NoSuchElementException e) {
+            return false;
+        } catch (ElementNotInteractableException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void clickToCloseAswift8Host() {
+        try {
+            clickElement(Locator.F_1PageMain.bannerAswift8Host);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        } catch (ElementNotInteractableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void switchToIFrame() {
+        Driver.getDriver().switchTo().frame(Locator.F_1PageMain.aswift1);
+    }
+
+    public static void clickCloseAswift1Host() {
+        clickElement(Locator.F_1PageMain.closeAswift1Host);
+    }
+
+    public static void returnToMainWindow() {
+        Driver.getDriver().switchTo().defaultContent();
+    }
+
+
 }
