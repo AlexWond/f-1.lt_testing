@@ -10,6 +10,7 @@ public class F_1PageMainTest extends BaseTest {
     @BeforeMethod
     @Override
     public void setup() {
+        F_1PageMainPage.set();
         F_1PageMainPage.open();
     }
 
