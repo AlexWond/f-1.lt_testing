@@ -14,7 +14,8 @@ public class Locator {
         public static
         By bannerOverlay
                 = By.xpath(
-                        "//a[@style='position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; z-index: 9999999999; cursor: pointer;']");
+                        "//a[@style='position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;" +
+                                " z-index: 9999999999; cursor: pointer;']");
         public static By userNameInput = By.xpath("//input[@id='register-username']");
         public static By emailInput = By.xpath("//input[@id='register-email']");
 

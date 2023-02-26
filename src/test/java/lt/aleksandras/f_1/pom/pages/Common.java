@@ -105,7 +105,11 @@ public class Common {
         return true;
     }
 
-    public static void clickToCloseElement() {
-        clickElement(Locator.F_1PageMain.bannerOverlay);
+    public static void clickToCloseOverlayElement() {
+        try {
+            clickElement(Locator.F_1PageMain.bannerOverlay);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -39,7 +39,7 @@ public class F_1PageMainPage {
     }
 
     public static void clickCloseOverlayElement() {
-        Common.clickToCloseElement();
+        Common.clickToCloseOverlayElement();
     }
 
     public static void inputUserName(String userName) {
@@ -80,5 +80,9 @@ public class F_1PageMainPage {
         return Common.getElementText(
                 Locator.F_1PageMain.registerError
         );
+    }
+
+    public static void sleep(int millisec) {
+        Common.sleep(millisec);
     }
 }

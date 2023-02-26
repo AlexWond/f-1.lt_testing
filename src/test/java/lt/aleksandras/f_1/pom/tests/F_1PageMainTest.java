@@ -1,6 +1,5 @@
 package lt.aleksandras.f_1.pom.tests;
 
-import lt.aleksandras.f_1.pom.pages.Common;
 import lt.aleksandras.f_1.pom.pages.F_1PageMainPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -59,9 +58,8 @@ public class F_1PageMainTest extends BaseTest{
         F_1PageMainPage.inputEmail(email);
         F_1PageMainPage.inputPassword(password);
         F_1PageMainPage.inputConfirmPassword(confirmPassword);
-        Common.sleep(3000);
         F_1PageMainPage.clickRegisterButton();
-        Common.sleep(3000);
+        F_1PageMainPage.sleep(2000);
 
         actualResult = F_1PageMainPage.readMessage();
 
