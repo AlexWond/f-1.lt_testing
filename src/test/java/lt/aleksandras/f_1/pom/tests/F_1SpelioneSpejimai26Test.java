@@ -29,22 +29,22 @@ public class F_1SpelioneSpejimai26Test extends BaseTest {
     }
 
     @Test
-    public void testGuessFormSelectDropDown(){
-            String racerNumber = "16";
-            String expectedResult = "Charlesas Leclercas";
-            String actualResult;
+    public void testGuessFormSelectDropDown() {
+        String racerNumber = "16";
+        String expectedResult = "Charlesas Leclercas";
+        String actualResult;
 
-            F_1SpelioneSpejimai26Page.selectRacerFromDropDownListPP(racerNumber);
-            F_1SpelioneSpejimai26Page.clickButtonPatvirtinti();
-            actualResult = F_1SpelioneSpejimai26Page.readMessageSelectedValuePP();
+        F_1SpelioneSpejimai26Page.selectRacerFromDropDownListPP(racerNumber);
+        F_1SpelioneSpejimai26Page.clickButtonPatvirtinti();
+        actualResult = F_1SpelioneSpejimai26Page.readMessageSelectedValuePP();
 
-            Assert.assertEquals(
-                    actualResult,
-                    expectedResult,
-                    String.format(
-                            "Expected racer: %s\nSelected racer: %s", expectedResult, actualResult
-                    )
-            );
+        Assert.assertEquals(
+                actualResult,
+                expectedResult,
+                String.format(
+                        "Expected racer: %s\nSelected racer: %s", expectedResult, actualResult
+                )
+        );
 
     }
 
@@ -61,10 +61,10 @@ public class F_1SpelioneSpejimai26Test extends BaseTest {
         String actualResult;
 
         F_1SpelioneSpejimai26Page.selectRacerFromDropDownListPP(number[0]);
-        for (int place = 1; place <= number.length-2; place++) {
+        for (int place = 1; place <= number.length - 2; place++) {
             F_1SpelioneSpejimai26Page.selectRacerFromDropDownList(place, number[place]);
         }
-        F_1SpelioneSpejimai26Page.selectRacerFromDropDownListFastest(number[number.length-1]);
+        F_1SpelioneSpejimai26Page.selectRacerFromDropDownListFastest(number[number.length - 1]);
         F_1SpelioneSpejimai26Page.clickButtonPatvirtinti();
 
         actualResult = F_1SpelioneSpejimai26Page.readMessage();

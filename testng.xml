@@ -5,6 +5,7 @@
         <classes>
             <class name="lt.aleksandras.f_1.pom.tests.F_1PageMainTest"/>
             <class name="lt.aleksandras.f_1.pom.tests.F_1SpelioneSpejimai26Test"/>
+            <class name="lt.aleksandras.f_1.pom.tests.F_1TvarkarastisTest"/>
         </classes>
     </test>
 </suite>

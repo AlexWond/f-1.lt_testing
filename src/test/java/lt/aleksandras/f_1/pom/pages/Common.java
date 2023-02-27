@@ -4,7 +4,12 @@ import lt.aleksandras.f_1.pom.utils.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.Set;
 
 public class Common {
 
@@ -74,6 +79,26 @@ public class Common {
             clickElement(Locator.F_1PageMain.bannerDraugas);
         } catch (NoSuchElementException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void waitForElementToBeClickable(By locator) {
+        WebDriverWait webDriverWait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public static String getUrl() {
+        return Driver.getDriver().getCurrentUrl();
+    }
+
+    public static void switchToChildWindow() {
+        String mainWindow = Driver.getDriver().getWindowHandle();
+        Set<String> s1 = Driver.getDriver().getWindowHandles();
+
+        for (String actual : s1) {
+            if (!actual.equalsIgnoreCase(mainWindow)) {
+                Driver.getDriver().switchTo().window(actual);
+            }
         }
     }
 }
