@@ -28,6 +28,26 @@ public class F_1SpelioneSpejimai26Test extends BaseTest {
         F_1PageMainPage.sleep(3000);
     }
 
+    @Test
+    public void testGuessFormSelectDropDown(){
+            String racerNumber = "16";
+            String expectedResult = "Charlesas Leclercas";
+            String actualResult;
+
+            F_1SpelioneSpejimai26Page.selectRacerFromDropDownListPP(racerNumber);
+            F_1SpelioneSpejimai26Page.clickButtonPatvirtinti();
+            actualResult = F_1SpelioneSpejimai26Page.readMessageSelectedValuePP();
+
+            Assert.assertEquals(
+                    actualResult,
+                    expectedResult,
+                    String.format(
+                            "Expected racer: %s\nSelected racer: %s", expectedResult, actualResult
+                    )
+            );
+
+    }
+
     @DataProvider(name = "dataProviderTestFillGuessForm")
     public Object[][] dataProviderRacersSelected() {
         return new Object[][]{

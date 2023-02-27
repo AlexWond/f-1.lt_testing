@@ -71,4 +71,10 @@ public class F_1SpelioneSpejimai26Page {
                 Locator.F_1SpelioneSpejimai26.guessConfirmMessage
         );
     }
+
+    public static String readMessageSelectedValuePP() {
+        return Common.getElementText(
+                Locator.F_1SpelioneSpejimai26.selectedValuePP
+        );
+    }
 }

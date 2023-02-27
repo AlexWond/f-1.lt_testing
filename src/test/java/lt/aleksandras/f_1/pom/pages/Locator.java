@@ -35,6 +35,7 @@ public class Locator {
         public static By fastestLap = By.xpath("//select[@name='fl']");
         public static By buttonPatvirtinti = By.xpath("//button[@type='submit']");
         public static By guessConfirmMessage = By.xpath("//div[@class='alert alert-success']");
+        public static By selectedValuePP = By.xpath("(//select[@name='pp']//option[@selected])[2]");
 
         public static By placePosition(int place) {
             return By.xpath("//select[@name='" + place + "']");
