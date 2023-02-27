@@ -16,6 +16,7 @@ public class F_1SpelioneSpejimai26Test extends BaseTest {
         F_1PageMainPage.open();
         logginIn("qwerty0001", "paswordas");
         F_1SpelioneSpejimai26Page.open();
+        F_1SpelioneSpejimai26Page.closeAds();
     }
 
     private void logginIn(String userName, String password) {
@@ -39,7 +40,6 @@ public class F_1SpelioneSpejimai26Test extends BaseTest {
         String expectedResult = "Jūsų spėjimas";
         String actualResult;
 
-        F_1SpelioneSpejimai26Page.closeAds();
         F_1SpelioneSpejimai26Page.selectRacerFromDropDownListPP(number[0]);
         for (int place = 1; place <= number.length-2; place++) {
             F_1SpelioneSpejimai26Page.selectRacerFromDropDownList(place, number[place]);

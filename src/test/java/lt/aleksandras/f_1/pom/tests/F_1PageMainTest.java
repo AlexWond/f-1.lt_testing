@@ -12,6 +12,7 @@ public class F_1PageMainTest extends BaseTest {
     public void setup() {
         F_1PageMainPage.set();
         F_1PageMainPage.open();
+        F_1PageMainPage.closeAdsAndCookies();
     }
 
     @DataProvider(name = "dataProviderTestNegativeRegistrationForm")
@@ -45,7 +46,6 @@ public class F_1PageMainTest extends BaseTest {
         boolean expectedResult = true;
         boolean actualResult;
 
-        F_1PageMainPage.closeAdsAndCookies();
         F_1PageMainPage.clickPrisijungtiButton();
         F_1PageMainPage.clickRegistruokitesButton();
         actualResult = F_1PageMainPage.isRegistrationForm();
@@ -66,7 +66,6 @@ public class F_1PageMainTest extends BaseTest {
 
         String actualResult;
 
-        F_1PageMainPage.closeAdsAndCookies();
         F_1PageMainPage.clickPrisijungtiButton();
         F_1PageMainPage.clickRegistruokitesButton();
         F_1PageMainPage.inputUserName(userName);
@@ -95,7 +94,6 @@ public class F_1PageMainTest extends BaseTest {
         String expectedResult = "Vartotojas sukurtas";
         String actualResult;
 
-        F_1PageMainPage.closeAdsAndCookies();
         F_1PageMainPage.clickPrisijungtiButton();
         F_1PageMainPage.clickRegistruokitesButton();
         F_1PageMainPage.inputUserName(userName);
@@ -116,12 +114,11 @@ public class F_1PageMainTest extends BaseTest {
         String expectedResult = userName;
         String actualResult;
 
-        F_1PageMainPage.closeAdsAndCookies();
         F_1PageMainPage.clickPrisijungtiButton();
         F_1PageMainPage.inputLoginUserName(userName);
         F_1PageMainPage.inputLoginPassword(password);
         F_1PageMainPage.clickLoginPrisijungti();
-        F_1PageMainPage.sleep(3000);
+        F_1PageMainPage.sleep(2000);
 
         actualResult = F_1PageMainPage.readUserName();
 
