@@ -1,6 +1,7 @@
 package lt.aleksandras.f_1.pom.pages;
 
 import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NoSuchElementException;
 
 public class F_1PageMainPage {
@@ -36,6 +37,8 @@ public class F_1PageMainPage {
             e.printStackTrace();
         } catch (ElementClickInterceptedException e) {
             e.printStackTrace();
+        } catch (ElementNotInteractableException e) {
+            e.printStackTrace();
         }
     }
 
@@ -46,18 +49,19 @@ public class F_1PageMainPage {
     }
 
     public static boolean isRegistrationForm() {
-        return Common.isRegistrationFormPresent();
+        return Common.isElement(Locator.F_1PageMain.registrationForm);
     }
 
     private static boolean isDraugasBanner() {
-        return Common.isDraugasLtBanner();
+        return Common.isElement(Locator.F_1PageMain.bannerDraugasLt);
     }
 
     private static void clickCloseDraugasBanner() {
-        Common.clickToCloseDraugasBanner();
+        Common.clickToClose(Locator.F_1PageMain.bannerDraugas);
     }
 
     public static void inputUserName(String userName) {
+        Common.waitForElementToBeClickable(Locator.F_1PageMain.userNameInput);
         Common.sendKeysToElement(
                 Locator.F_1PageMain.userNameInput,
                 userName
@@ -65,6 +69,7 @@ public class F_1PageMainPage {
     }
 
     public static void inputEmail(String email) {
+        Common.waitForElementToBeClickable(Locator.F_1PageMain.emailInput);
         Common.sendKeysToElement(
                 Locator.F_1PageMain.emailInput,
                 email
@@ -72,6 +77,7 @@ public class F_1PageMainPage {
     }
 
     public static void inputPassword(String password) {
+        Common.waitForElementToBeClickable(Locator.F_1PageMain.passwordInput);
         Common.sendKeysToElement(
                 Locator.F_1PageMain.passwordInput,
                 password
@@ -79,6 +85,7 @@ public class F_1PageMainPage {
     }
 
     public static void inputConfirmPassword(String confirmPassword) {
+        Common.waitForElementToBeClickable(Locator.F_1PageMain.passwordConfirmInput);
         Common.sendKeysToElement(
                 Locator.F_1PageMain.passwordConfirmInput,
                 confirmPassword
@@ -92,8 +99,9 @@ public class F_1PageMainPage {
     }
 
     public static String readMessage() {
+        Common.waitElementToBeReadable(Locator.F_1PageMain.registerMessage);
         return Common.getElementText(
-                Locator.F_1PageMain.registerError
+                Locator.F_1PageMain.registerMessage
         );
     }
 
@@ -110,6 +118,7 @@ public class F_1PageMainPage {
     }
 
     public static void inputLoginPassword(String password) {
+        Common.waitForElementToBeClickable(Locator.F_1PageMain.loginPassword);
         Common.sendKeysToElement(
                 Locator.F_1PageMain.loginPassword,
                 password
@@ -117,10 +126,12 @@ public class F_1PageMainPage {
     }
 
     public static void clickLoginPrisijungti() {
+        Common.waitForElementToBeClickable(Locator.F_1PageMain.loginPrisijungit);
         Common.clickElement(Locator.F_1PageMain.loginPrisijungit);
     }
 
     public static String readUserName() {
+        Common.waitElementToBeReadable(Locator.F_1PageMain.loggedInUserName);
         return Common.getElementText(Locator.F_1PageMain.loggedInUserName);
     }
 

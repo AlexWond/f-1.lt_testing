@@ -56,27 +56,18 @@ public class Common {
         }
     }
 
-    public static boolean isRegistrationFormPresent() {
+    public static boolean isElement(By locator) {
         try {
-            getElement(Locator.F_1PageMain.registrationForm);
+            getElement(locator);
         } catch (NoSuchElementException e) {
             return false;
         }
         return true;
     }
 
-    public static boolean isDraugasLtBanner() {
+    public static void clickToClose(By locator) {
         try {
-            getElement(Locator.F_1PageMain.bannerDraugasLt);
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-        return true;
-    }
-
-    public static void clickToCloseDraugasBanner() {
-        try {
-            clickElement(Locator.F_1PageMain.bannerDraugas);
+            clickElement(locator);
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
@@ -100,5 +91,10 @@ public class Common {
                 Driver.getDriver().switchTo().window(actual);
             }
         }
+    }
+
+    public static void waitElementToBeReadable(By locator) {
+        WebDriverWait webDriverWait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }

@@ -29,7 +29,7 @@ public class F_1PageMainTest extends BaseTest {
     @DataProvider(name = "dataProviderTestPositiveRegistrationForm")
     public Object[][] dataProviderPositiveRegistrationForm() {
         return new Object[][]{
-                {"Antanas105", "info@00005.lt", "paswordas", "paswordas"}
+                {"Antanas113", "info@00013.lt", "paswordas", "paswordas"}
         };
     }
 
@@ -73,7 +73,6 @@ public class F_1PageMainTest extends BaseTest {
         F_1PageMainPage.inputPassword(password);
         F_1PageMainPage.inputConfirmPassword(confirmPassword);
         F_1PageMainPage.clickRegisterButton();
-        F_1PageMainPage.sleep(2000);
 
         actualResult = F_1PageMainPage.readMessage();
 
@@ -101,12 +100,12 @@ public class F_1PageMainTest extends BaseTest {
         F_1PageMainPage.inputPassword(password);
         F_1PageMainPage.inputConfirmPassword(confirmPassword);
         F_1PageMainPage.clickRegisterButton();
-        F_1PageMainPage.sleep(2000);
 
         actualResult = F_1PageMainPage.readMessage();
 
         Assert.assertTrue(
-                actualResult.contains(expectedResult));
+                actualResult.contains(expectedResult),
+                String.format("Actual: %s\nExpected: %s", actualResult, expectedResult));
     }
 
     @Test(dataProvider = "dataProviderTestPositiveLogin")
@@ -118,7 +117,6 @@ public class F_1PageMainTest extends BaseTest {
         F_1PageMainPage.inputLoginUserName(userName);
         F_1PageMainPage.inputLoginPassword(password);
         F_1PageMainPage.clickLoginPrisijungti();
-        F_1PageMainPage.sleep(2000);
 
         actualResult = F_1PageMainPage.readUserName();
 
