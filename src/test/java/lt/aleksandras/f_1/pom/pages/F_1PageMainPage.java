@@ -1,5 +1,6 @@
 package lt.aleksandras.f_1.pom.pages;
 
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.NoSuchElementException;
 
 public class F_1PageMainPage {
@@ -23,6 +24,8 @@ public class F_1PageMainPage {
             Common.clickElement(Locator.F_1PageMain.buttonCloseAdvertisment);
         } catch (NoSuchElementException e) {
             e.printStackTrace();
+        } catch (ElementClickInterceptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -30,6 +33,8 @@ public class F_1PageMainPage {
         try {
             Common.clickElement(Locator.F_1PageMain.buttonSupratauCookies);
         } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        } catch (ElementClickInterceptedException e) {
             e.printStackTrace();
         }
     }
@@ -97,6 +102,7 @@ public class F_1PageMainPage {
     }
 
     public static void inputLoginUserName(String userName) {
+        Common.waitForElementToBeClickable(Locator.F_1PageMain.loginUserName);
         Common.sendKeysToElement(
                 Locator.F_1PageMain.loginUserName,
                 userName
