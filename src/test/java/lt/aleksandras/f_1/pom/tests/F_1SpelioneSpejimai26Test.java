@@ -45,7 +45,6 @@ public class F_1SpelioneSpejimai26Test extends BaseTest {
                         "Expected racer: %s\nSelected racer: %s", expectedResult, actualResult
                 )
         );
-
     }
 
     @DataProvider(name = "dataProviderTestFillGuessForm")
@@ -68,8 +67,6 @@ public class F_1SpelioneSpejimai26Test extends BaseTest {
         F_1SpelioneSpejimai26Page.clickButtonPatvirtinti();
 
         actualResult = F_1SpelioneSpejimai26Page.readMessage();
-
-        F_1SpelioneSpejimai26Page.sleep(3000);
 
         Assert.assertTrue(actualResult.contains(expectedResult));
     }

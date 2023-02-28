@@ -1,5 +1,7 @@
 package lt.aleksandras.f_1.pom.pages;
 
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NoSuchElementException;
 
 public class F_1SpelioneSpejimai26Page {
@@ -21,22 +23,35 @@ public class F_1SpelioneSpejimai26Page {
             clickCloseDraugasBanner();
         }
         clickCloseAdvertisment();
+        clickSupratauCookiesButton();
+    }
+
+    private static void clickSupratauCookiesButton() {
+        try {
+            Common.clickElement(Locator.F_1SpelioneSpejimai26.buttonSupratauCookies);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        } catch (ElementClickInterceptedException e) {
+            e.printStackTrace();
+        } catch (ElementNotInteractableException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void clickCloseAdvertisment() {
         try {
-            Common.clickElement(Locator.F_1PageMain.buttonCloseAdvertisment);
+            Common.clickElement(Locator.F_1SpelioneSpejimai26.buttonCloseAdvertisment);
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
     }
 
     private static void clickCloseDraugasBanner() {
-        Common.clickToCloseDraugasBanner();
+        Common.clickToClose(Locator.F_1SpelioneSpejimai26.bannerDraugas);
     }
 
     private static boolean isDraugasBanner() {
-        return Common.isDraugasLtBanner();
+        return Common.isElement(Locator.F_1SpelioneSpejimai26.bannerDraugasLt);
     }
 
     public static void selectRacerFromDropDownListPP(String number) {
