@@ -1,5 +1,7 @@
 package lt.aleksandras.f_1.pom.pages;
 
+import lt.aleksandras.f_1.pom.utils.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NoSuchElementException;
@@ -141,5 +143,12 @@ public class F_1PageMainPage {
         }
         clickCloseAdvertisment();
         clickSupratauCookiesButton();
+        for (int j = 1; j < 8; j++) {
+            if (j == 2 || j == 4) continue;
+            Driver.getDriver().switchTo().frame("aswift_" + j);
+            Common.isElement(Locator.F_1PageMain.buttonCloseAswift(1));
+            Common.clickToClose(Locator.F_1PageMain.buttonCloseAswift(1));
+            Driver.getDriver().switchTo().defaultContent();
+        }
     }
 }
